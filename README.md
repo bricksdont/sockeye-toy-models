@@ -17,7 +17,7 @@ Clone this repository in the desired place:
     git clone https://github.com/bricksdont/sockeye-toy-models
     cd sockeye-toy-models
 
-Create a new virtualenv that uses Python 3:
+Create a new virtualenv that uses Python 3. Please make sure to run this command outside of any virtual Python environment:
 
     ./scripts/make_virtualenv.sh
 
