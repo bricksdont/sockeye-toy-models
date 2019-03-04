@@ -29,6 +29,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.translate \
 				--batch-size 100
 
 # undo BPE
+
 cat $translations/test.bpe.$model_name.$trg | sed 's/\@\@ //g' > $translations/test.truecased.$model_name.$trg
 
 # undo truecasing
