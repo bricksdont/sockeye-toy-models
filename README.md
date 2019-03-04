@@ -38,3 +38,9 @@ Preprocess data:
 Then finally train a model:
 
     ./scripts/train.sh
+
+The training process can be interrupted at any time.
+
+Evaluate a trained model with
+
+    ./scripts/evaluate.sh
