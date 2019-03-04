@@ -21,7 +21,7 @@ Create a new virtualenv that uses Python 3. Please make sure to run this command
 
     ./scripts/make_virtualenv.sh
 
-**Important**: Then activate the env by executing the `source` command that is output by the sheel script above.
+**Important**: Then activate the env by executing the `source` command that is output by the shell script above.
 
 Download and install required software:
 
