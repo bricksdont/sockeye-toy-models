@@ -8,7 +8,7 @@ This repo provides sample code that eventually trains a toy Sockeye model. It do
 - Python 3 must be installed on your system, i.e. the command `python3` must be available
 - Make sure virtualenv is installed on your system. To install, e.g.
 
-    pip3 install virtualenv
+    `pip install virtualenv
 
 # Steps
 
