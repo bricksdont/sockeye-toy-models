@@ -5,7 +5,12 @@ base=$scripts/..
 
 mkdir -p $base/models
 
-python -m sockeye.train \
+num_threads=1
+model_name=model_10k
+
+##################################
+
+OMP_NUM_THREADS=$num_threads python -m sockeye.train \
 			-s $base/data/train.bpe.de \
 			-t $base/data/train.bpe.en \
 			-vs $base/data/dev.bpe.de \
@@ -20,5 +25,5 @@ python -m sockeye.train \
                         --max-seq-len 60 \
                         --decode-and-evaluate 500 \
                         --use-cpu \
-                        -o $base/models/model_10k \
-			--max-updates 1000
+                        -o $base/models/$model_name \
+			--max-updates 10000
