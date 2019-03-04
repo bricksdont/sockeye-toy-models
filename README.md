@@ -2,6 +2,8 @@
 
 This repo provides sample code that eventually trains a toy Sockeye model. It downloads and installs all software and data, preprocesses data and trains a model.
 
+This will train a **toy** model that does not output meaningful translations. All commands assume training and translation should run on **CPU**, rather than **GPU**.
+
 # Requirements
 
 - This only works on a Unix-like system, with bash.
