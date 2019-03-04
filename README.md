@@ -41,7 +41,7 @@ Then finally train a model:
 
     ./scripts/train.sh
 
-The training process can be interrupted at any time.
+The training process can be interrupted at any time. Interrupted trainings can usually be continued from the point where they left off.
 
 Evaluate a trained model with
 
