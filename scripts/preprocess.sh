@@ -16,13 +16,25 @@ MOSES=$base/tools/moses-scripts/scripts
 bpe_num_operations=10000
 bpe_vocab_threshold=10
 
+TMP=/var/tmp
+
 #################################################################
+
+# fix original test set (has wrong carriage return characters)
+
+cat $data/test.$src | perl -pE 's/(\^M|\r)//g' > $TMP/test.$src
+cat $data/test.$trg | perl -pE 's/(\^M|\r)//g' > $TMP/test.$trg
+
+cp $TMP/test.$src $data/test.$src
+cp $TMP/test.$trg $data/test.$trg
+
+rm $TMP/test.$src $TMP/test.$trg
 
 # normalize train, dev and test
 
 for corpus in train dev test; do
-	cat $data/$corpus.$src | perl $MOSES/tokenizer/normalize-punctuation.perl > $data/$corpus.normalized.$src
-	cat $data/$corpus.$trg | perl $MOSES/tokenizer/normalize-punctuation.perl > $data/$corpus.normalized.$trg
+	cat $data/$corpus.$src | sed -e "s/\r//g" | perl $MOSES/tokenizer/normalize-punctuation.perl > $data/$corpus.normalized.$src
+	cat $data/$corpus.$trg | sed -e "s/\r//g" | perl $MOSES/tokenizer/normalize-punctuation.perl > $data/$corpus.normalized.$trg
 done
 
 # tokenize train, dev and test
