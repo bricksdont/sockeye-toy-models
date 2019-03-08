@@ -13,8 +13,8 @@ trg=en
 # cloned from https://github.com/bricksdont/moses-scripts
 MOSES=$base/tools/moses-scripts/scripts
 
-bpe_num_operations=10000
-bpe_vocab_threshold=10
+bpe_num_operations=30000
+bpe_vocab_threshold=50
 
 TMP=/var/tmp
 
