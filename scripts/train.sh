@@ -5,25 +5,24 @@ base=$scripts/..
 
 mkdir -p $base/models
 
-num_threads=1
-model_name=model_10k
+threads=2
+model_name=model_continue
 
-##################################
-
-OMP_NUM_THREADS=$num_threads python -m sockeye.train \
-			-s $base/data/train.bpe.de \
-			-t $base/data/train.bpe.en \
-			-vs $base/data/dev.bpe.de \
+OMP_NUM_THREADS=$threads python -m sockeye.train \
+                        -s $base/data/train.bpe.de \
+                        -t $base/data/train.bpe.en \
+                        -vs $base/data/dev.bpe.de \
                         -vt $base/data/dev.bpe.en \
                         --encoder rnn \
                         --decoder rnn \
-                        --num-embed 64 \
-			--num-layers 1:1 \
-			--checkpoint-frequency 500 \
-                        --rnn-num-hidden 128 \
+                        --num-embed 256 \
+                        --num-layers 1:1 \
+                        --checkpoint-frequency 100 \
+                        --rnn-num-hidden 512 \
                         --rnn-attention-type dot \
-                        --max-seq-len 60 \
+                        --max-seq-len 80 \
                         --decode-and-evaluate 500 \
                         --use-cpu \
                         -o $base/models/$model_name \
-			--max-updates 10000
+                        --params $base/params.best \
+                        --max-updates 150
