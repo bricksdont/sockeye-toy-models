@@ -8,17 +8,22 @@ data=$base/data
 
 mkdir -p $data
 
-wget http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz -P $data
-tar -xzvf $data/training-parallel-nc-v12.tgz -C $data
+wget http://www.statmt.org/europarl/v9/training/europarl-v9.de-en.tsv.gz -P $data
+gunzip $data/europarl-v9.de-en.tsv.gz
 
-head -n 10000 $data/training/news-commentary-v12.de-en.de > $data/train.de
-head -n 10000 $data/training/news-commentary-v12.de-en.en > $data/train.en
+cat $data/europarl-v9.de-en.tsv | shuf > $data/europarl-v9.de-en.shuffled.tsv
 
-head -n 12000 $data/training/news-commentary-v12.de-en.de | tail -n 2000 > $data/dev.de
-head -n 12000 $data/training/news-commentary-v12.de-en.en | tail -n 2000 > $data/dev.en
+cut -f 1 $data/europarl-v9.de-en.shuffled.tsv > $data/europarl.de
+cut -f 2 $data/europarl-v9.de-en.shuffled.tsv > $data/europarl.en
 
-head -n 14000 $data/training/news-commentary-v12.de-en.de | tail -n 2000 > $data/test.de
-head -n 14000 $data/training/news-commentary-v12.de-en.en | tail -n 2000 > $data/test.en
+head -n 1750000 $data/europarl.de > $data/train.de
+head -n 1750000 $data/europarl.en > $data/train.en
+
+head -n 1752000 $data/europarl.de | tail -n 2000 > $data/dev.de
+head -n 1752000 $data/europarl.en | tail -n 2000 > $data/dev.en
+
+head -n 1754000 $data/europarl.de | tail -n 2000 > $data/test.de
+head -n 1754000 $data/europarl.en | tail -n 2000 > $data/test.en
 
 # sizes
 echo "Sizes of corpora:"
