@@ -10,8 +10,8 @@ echo "Make sure this script is executed AFTER you have activated a virtualenv"
 
 # install Sockeye
 
-# CUDA version on rattle
-CUDA_VERSION=cu80
+# CUDA version on GCP instance
+CUDA_VERSION=cu100
 
 wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt
 pip install sockeye --no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt
