@@ -13,57 +13,24 @@ trg=en
 # cloned from https://github.com/bricksdont/moses-scripts
 MOSES=$base/tools/moses-scripts/scripts
 
-bpe_num_operations=10000
-bpe_vocab_threshold=10
+bpe_num_operations=30000
+bpe_vocab_threshold=50
 
 TMP=/var/tmp
 
 #################################################################
 
-# fix original test set (has wrong carriage return characters)
-
-cat $data/test.$src | perl -pE 's/(\^M|\r)//g' > $TMP/test.$src
-cat $data/test.$trg | perl -pE 's/(\^M|\r)//g' > $TMP/test.$trg
-
-cp $TMP/test.$src $data/test.$src
-cp $TMP/test.$trg $data/test.$trg
-
-rm $TMP/test.$src $TMP/test.$trg
-
-# normalize train, dev and test
+# input files are preprocessed already up to truecasing
 
 for corpus in train dev test; do
-	cat $data/$corpus.$src | sed -e "s/\r//g" | perl $MOSES/tokenizer/normalize-punctuation.perl > $data/$corpus.normalized.$src
-	cat $data/$corpus.$trg | sed -e "s/\r//g" | perl $MOSES/tokenizer/normalize-punctuation.perl > $data/$corpus.normalized.$trg
+    ln -s $data/$corpus.$src $data/$corpus.truecased.$src
+    ln -s $data/$corpus.$trg $data/$corpus.truecased.$trg
 done
 
-# tokenize train, dev and test
+# remove preprocessing for target language test data, for evaluation
 
-for corpus in train dev test; do
-	cat $data/$corpus.normalized.$src | perl $MOSES/tokenizer/tokenizer.perl -a -q -l $src > $data/$corpus.tokenized.$src
-	cat $data/$corpus.normalized.$trg | perl $MOSES/tokenizer/tokenizer.perl -a -q -l $trg > $data/$corpus.tokenized.$trg
-done
-
-# clean length and ratio of train (only train!)
-
-$MOSES/training/clean-corpus-n.perl $data/train.tokenized $src $trg $data/train.tokenized.clean 1 80
-
-# learn truecase model on train (learn one model for each language)
-
-$MOSES/recaser/train-truecaser.perl -corpus $data/train.tokenized.clean.$src -model $base/shared_models/truecase-model.$src
-$MOSES/recaser/train-truecaser.perl -corpus $data/train.tokenized.clean.$trg -model $base/shared_models/truecase-model.$trg
-
-# apply truecase model to train, test and dev
-
-for corpus in train; do
-	$MOSES/recaser/truecase.perl -model $base/shared_models/truecase-model.$src < $data/$corpus.tokenized.clean.$src > $data/$corpus.truecased.$src
-	$MOSES/recaser/truecase.perl -model $base/shared_models/truecase-model.$trg < $data/$corpus.tokenized.clean.$trg > $data/$corpus.truecased.$trg
-done
-
-for corpus in dev test; do
-        $MOSES/recaser/truecase.perl -model $base/shared_models/truecase-model.$src < $data/$corpus.tokenized.$src > $data/$corpus.truecased.$src
-        $MOSES/recaser/truecase.perl -model $base/shared_models/truecase-model.$trg < $data/$corpus.tokenized.$trg > $data/$corpus.truecased.$trg
-done
+cat $data/test.truecased.$trg | $MOSES/recaser/detruecase.perl > $data/test.tokenized.$trg
+cat $data/test.tokenized.$trg | $MOSES/tokenizer/detokenizer.perl -l $trg > $data/test.$trg
 
 # learn BPE model on train (concatenate both languages)
 

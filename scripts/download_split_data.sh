@@ -7,18 +7,22 @@ base=$scripts/..
 data=$base/data
 
 mkdir -p $data
+mkdir -p $data/dev
 
-wget http://data.statmt.org/wmt17/translation-task/training-parallel-nc-v12.tgz -P $data
-tar -xzvf $data/training-parallel-nc-v12.tgz -C $data
+wget http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.de.gz -P $data
+wget http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.en.gz -P $data
+wget http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/dev.tgz -P $data
 
-head -n 10000 $data/training/news-commentary-v12.de-en.de > $data/train.de
-head -n 10000 $data/training/news-commentary-v12.de-en.en > $data/train.en
+cat $data/corpus.tc.de.gz | gunzip -c - > $data/train.de
+cat $data/corpus.tc.en.gz | gunzip -c - > $data/train.en
 
-head -n 12000 $data/training/news-commentary-v12.de-en.de | tail -n 2000 > $data/dev.de
-head -n 12000 $data/training/news-commentary-v12.de-en.en | tail -n 2000 > $data/dev.en
+tar -xzvf $data/dev.tgz -C $data/dev
 
-head -n 14000 $data/training/news-commentary-v12.de-en.de | tail -n 2000 > $data/test.de
-head -n 14000 $data/training/news-commentary-v12.de-en.en | tail -n 2000 > $data/test.en
+cp $data/dev/newstest2015.tc.de $data/dev.de
+cp $data/dev/newstest2015.tc.en $data/dev.en
+
+cp $data/dev/newstest2016.tc.de $data/test.de
+cp $data/dev/newstest2016.tc.en $data/test.en
 
 # sizes
 echo "Sizes of corpora:"

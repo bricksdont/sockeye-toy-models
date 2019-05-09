@@ -10,7 +10,14 @@ echo "Make sure this script is executed AFTER you have activated a virtualenv"
 
 # install Sockeye
 
-pip install sockeye==1.18.72 matplotlib mxboard
+# CUDA version on rattle
+CUDA_VERSION=cu80
+
+wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt
+pip install sockeye --no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt
+rm requirements.gpu-cu${CUDA_VERSION}.txt
+
+pip install matplotlib mxboard
 
 # install BPE library
 
