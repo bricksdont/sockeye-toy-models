@@ -7,7 +7,7 @@ mkdir -p $base/models
 
 num_threads=10
 model_name=model_wmt17
-devices=
+devices=-4
 
 ##################################
 
