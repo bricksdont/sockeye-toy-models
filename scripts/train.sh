@@ -40,4 +40,5 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --learning-rate-scheduler-type=plateau-reduce \
             --min-num-epochs=0 \
             --device-ids=$devices \
+            --decode-and-evaluate-use-cpu \
             -o $base/models/$model_name

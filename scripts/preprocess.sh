@@ -23,8 +23,8 @@ TMP=/var/tmp
 # input files are preprocessed already up to truecasing
 
 for corpus in train dev test; do
-    ln -s $data/$corpus.$src $data/$corpus.truecased.$src
-    ln -s $data/$corpus.$trg $data/$corpus.truecased.$trg
+    ln -s $corpus.$src $data/$corpus.truecased.$src
+    ln -s $corpus.$trg $data/$corpus.truecased.$trg
 done
 
 # remove preprocessing for target language test data, for evaluation
