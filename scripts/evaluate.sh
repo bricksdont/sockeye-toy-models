@@ -15,7 +15,7 @@ trg=en
 MOSES=$base/tools/moses-scripts/scripts
 
 model_name=model_wmt17
-num_threads=10
+num_threads=6
 
 ##########################################
 

@@ -5,7 +5,7 @@ base=$scripts/..
 
 mkdir -p $base/models
 
-num_threads=10
+num_threads=6
 model_name=model_wmt17
 devices=-4
 
