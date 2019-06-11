@@ -35,7 +35,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --rnn-decoder-hidden-dropout 0.2 \
             --layer-normalization \
             --weight-tying \
-            --weight-tying-type src_trg_softmax \
+            --weight-tying-type src_trg \
             --label-smoothing 0.1 \
             --decode-and-evaluate 500 \
             --checkpoint-frequency 4000 \
