@@ -7,7 +7,7 @@ mkdir -p $base/models
 
 num_threads=6
 model_name=model_wmt17_baseline
-devices=-4
+devices="3 4 5 6"
 evaluate_device=7
 
 ##################################
@@ -36,7 +36,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --checkpoint-frequency 4000 \
             --max-num-checkpoint-not-improved 16 \
             --learning-rate-reduce-factor 0.7 \
-            --initial-learning-rate=0.0002 \
+            --initial-learning-rate 0.0002 \
             --learning-rate-reduce-num-not-improved 8 \
             --learning-rate-scheduler-type=plateau-reduce \
             --min-num-epochs 0 \
