@@ -10,16 +10,18 @@ num_threads=6
 model_name=model_wmt17_reconstructor
 baseline_model_name=model_wmt17_baseline
 
+baseline_data=$models/baseline_model_name/../../data
+
 devices="3 4 5 6"
 evaluate_device=7
 
 ##################################
 
 OMP_NUM_THREADS=$num_threads python -m sockeye.train \
-			-s $base/data/train.bpe.de \
-			-t $base/data/train.bpe.en \
-			-vs $base/data/dev.bpe.de \
-            -vt $base/data/dev.bpe.en \
+			-s $baseline_data/train.bpe.de \
+			-t $baseline_data/train.bpe.en \
+			-vs $baseline_data/dev.bpe.de \
+            -vt $baseline_data/dev.bpe.en \
             --batch-type word \
             --batch-size 4096 \
             --max-seq-len 80:80 \

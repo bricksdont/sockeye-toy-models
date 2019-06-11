@@ -12,4 +12,7 @@ wget https://files.ifi.uzh.ch/cl/archiv/2019/mt19/mt19_u6_model.tar.gz -P $model
 
 tar -xzvf $models/mt19_u6_model.tar.gz -C $models
 
-ln -s $models/mt19_u6_model/models/model_wmt17 $models/model_wmt17_baseline
+mv $models/mt19_u6_model/models/model_wmt17 $models/model_wmt17_baseline
+
+rm -rf $models/mt19_u6_model
+rm $models/mt19_u6_model.tar.gz
