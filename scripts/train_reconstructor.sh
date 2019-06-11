@@ -47,6 +47,6 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --decode-and-evaluate-id=$evaluate_device \
             -o $base/models/$model_name \
             --reconstruction \
-            --reconstruction-lambda 1.0 \
+            --reconstruction-lambda 1 \
             --params $base/models/$baseline_model_name/params.best \
             --allow-missing-params
