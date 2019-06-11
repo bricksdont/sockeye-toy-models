@@ -44,7 +44,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --learning-rate-scheduler-type plateau-reduce \
             --min-num-epochs 0 \
             --device-ids $devices \
-            --decode-and-evaluate-id $evaluate_device \
+            --decode-and-evaluate-device-id $evaluate_device \
             -o $base/models/$model_name \
             --reconstruction \
             --reconstruction-lambda 1 \
