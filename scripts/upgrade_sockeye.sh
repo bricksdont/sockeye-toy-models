@@ -14,7 +14,4 @@ git clone https://github.com/bricksdont/sockeye $tools/sockeye
 (cd $tools/sockeye && git checkout reconstruction)
 (cd $tools/sockeye && git pull)
 
-# CUDA version on rattle
-CUDA_VERSION=80
-
-pip install --upgrade --no-deps -r $tools/sockeye/requirements/requirements.gpu-cu${CUDA_VERSION}.txt $tools/sockeye
+pip install --upgrade --no-deps $tools/sockeye

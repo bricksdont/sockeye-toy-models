@@ -34,7 +34,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --label-smoothing 0.1 \
             --decode-and-evaluate 500 \
             --checkpoint-frequency 4000 \
-            --max-num-checkpoint-not-improved 32 \
+            --max-num-checkpoint-not-improved 16 \
             --learning-rate-reduce-factor 0.7 \
             --initial-learning-rate=0.0002 \
             --learning-rate-reduce-num-not-improved 8 \

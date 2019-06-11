@@ -22,6 +22,8 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
 			-t $base/data/train.bpe.en \
 			-vs $base/data/dev.bpe.de \
             -vt $base/data/dev.bpe.en \
+            --source-vocab $base/models/$baseline_model_name/vocab.src.0.json \
+            --target-vocab $base/models/$baseline_model_name/vocab.trg.0.json \
             --batch-type word \
             --batch-size 4096 \
             --max-seq-len 80:80 \
@@ -39,7 +41,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
             --label-smoothing 0.1 \
             --decode-and-evaluate 500 \
             --checkpoint-frequency 4000 \
-            --max-num-checkpoint-not-improved 32 \
+            --max-num-checkpoint-not-improved 16 \
             --learning-rate-reduce-factor=0.7 \
             --initial-learning-rate=0.0002 \
             --learning-rate-reduce-num-not-improved 8 \
