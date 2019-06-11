@@ -8,7 +8,7 @@ mkdir -p $base/models
 num_threads=6
 
 model_name=model_wmt17_reconstructor
-baseline_model_name=mt19_u6_model/models/model_wmt17
+baseline_model_name=model_wmt17_baseline
 
 devices="3 4 5 6"
 evaluate_device=7
