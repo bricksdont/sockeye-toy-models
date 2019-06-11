@@ -1,6 +1,8 @@
 #! /bin/bash
 
-scripts=`dirname "$0"`
+script=`realpath $0`
+scripts=`dirname $script`
+
 base=$scripts/..
 
 models=$base/models
