@@ -16,7 +16,7 @@ git clone https://github.com/bricksdont/sockeye $tools/sockeye
 # CUDA version on rattle
 CUDA_VERSION=80
 
-pip install --no-deps -r $tools/sockeye/requirements.gpu-cu${CUDA_VERSION}.txt .
+pip install --no-deps -r $tools/sockeye/requirements.gpu-cu${CUDA_VERSION}.txt $tools/sockeye
 
 pip install matplotlib mxboard
 
