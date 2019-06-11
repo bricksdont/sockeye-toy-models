@@ -10,7 +10,7 @@ num_threads=6
 model_name=model_wmt17_reconstructor
 baseline_model_name=model_wmt17_baseline
 
-devices=-4
+devices="3 4 5 6"
 evaluate_device=7
 
 ##################################
