@@ -3,7 +3,9 @@
 scripts=`dirname "$0"`
 base=$scripts/..
 
-mkdir -p $base/models
+models=$base/models
+
+mkdir -p $models
 
 num_threads=6
 
