@@ -1,10 +1,11 @@
 # sockeye-toy-models
 
 This repo provides sample code that eventually trains a toy Sockeye model with reconstruction. It downloads and installs all software and data,
-preprocesses data and trains a model. After that, there is a script that demonstrates how evaluation typically works.
+preprocesses data and trains a model. After training a baseline model, it shows how to continue training with reconstruction.
 
-This will train a **toy** model that does not output meaningful translations. All commands assume training and translation should run on **GPU**,
-rather than **CPU**. Also, if you have a multicore machine, consider increasing `num_threads` in the scripts.
+All commands assume training and translation should run on **GPU**,
+rather than **CPU**. If this is not true for your setup, you will need to change the scripts.
+Also, if you have a multicore machine, consider increasing `num_threads` in the scripts.
 
 # Requirements
 
