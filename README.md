@@ -1,4 +1,4 @@
-# sockeye-toy-models
+# sockeye-toy-models: Reconstruction
 
 This repo provides sample code that eventually trains a toy Sockeye model with reconstruction. It downloads and installs all software and data,
 preprocesses data and trains a model. After training a baseline model, it shows how to continue training with reconstruction.
