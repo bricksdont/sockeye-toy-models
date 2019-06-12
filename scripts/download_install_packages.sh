@@ -18,6 +18,10 @@ CUDA_VERSION=80
 
 pip install --no-deps -r $tools/sockeye/requirements/requirements.gpu-cu${CUDA_VERSION}.txt $tools/sockeye
 
+# downgrade numpy, see https://github.com/awslabs/sockeye/issues/693
+
+pip install --upgrade numpy==1.16.1
+
 pip install matplotlib mxboard
 
 # install BPE library
