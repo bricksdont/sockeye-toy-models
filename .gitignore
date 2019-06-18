@@ -1,1 +1,6 @@
 .idea
+data
+models
+shared_models
+venvs
+tools
