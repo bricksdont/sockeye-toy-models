@@ -14,7 +14,7 @@ trg=en
 # cloned from https://github.com/bricksdont/moses-scripts
 MOSES=$base/tools/moses-scripts/scripts
 
-model_name=model_wmt17
+model_name=model_wmt17_baseline
 num_threads=6
 
 ##########################################
