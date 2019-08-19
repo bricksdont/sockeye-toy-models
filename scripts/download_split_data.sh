@@ -7,22 +7,24 @@ base=$scripts/..
 data=$base/data
 
 mkdir -p $data
-mkdir -p $data/dev
+mkdir -p $data
 
-wget http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.de.gz -P $data
-wget http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.en.gz -P $data
-wget http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/dev.tgz -P $data
+wget http://www.statmt.org/europarl/v9/training/europarl-v9.de-en.tsv.gz -P $data
+gunzip $data/europarl-v9.de-en.tsv.gz
 
-cat $data/corpus.tc.de.gz | gunzip -c - > $data/train.de
-cat $data/corpus.tc.en.gz | gunzip -c - > $data/train.en
+cat $data/europarl-v9.de-en.tsv | shuf > $data/europarl-v9.de-en.shuffled.tsv
 
-tar -xzvf $data/dev.tgz -C $data/dev
+cut -f 1 $data/europarl-v9.de-en.shuffled.tsv > $data/europarl.de
+cut -f 2 $data/europarl-v9.de-en.shuffled.tsv > $data/europarl.en
 
-cp $data/dev/newstest2015.tc.de $data/dev.de
-cp $data/dev/newstest2015.tc.en $data/dev.en
+head -n 1750000 $data/europarl.de > $data/train.de
+head -n 1750000 $data/europarl.en > $data/train.en
 
-cp $data/dev/newstest2016.tc.de $data/test.de
-cp $data/dev/newstest2016.tc.en $data/test.en
+head -n 1752000 $data/europarl.de | tail -n 2000 > $data/dev.de
+head -n 1752000 $data/europarl.en | tail -n 2000 > $data/dev.en
+
+head -n 1754000 $data/europarl.de | tail -n 2000 > $data/test.de
+head -n 1754000 $data/europarl.en | tail -n 2000 > $data/test.en
 
 # sizes
 echo "Sizes of corpora:"

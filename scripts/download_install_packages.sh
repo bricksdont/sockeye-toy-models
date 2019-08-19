@@ -10,8 +10,8 @@ echo "Make sure this script is executed AFTER you have activated a virtualenv"
 
 # install Sockeye
 
-# CUDA version on GCP instance
-CUDA_VERSION=100
+# CUDA version on rattle
+CUDA_VERSION=80
 
 wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt
 pip install sockeye --no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt
@@ -22,9 +22,6 @@ pip install matplotlib mxboard
 # install BPE library
 
 pip install subword-nmt
-
-# alternatively:
-#git clone https://github.com/rsennrich/subword-nmt $tools/subword-nmt
 
 # install sacrebleu for evaluation
 

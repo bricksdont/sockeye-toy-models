@@ -14,7 +14,7 @@ trg=en
 # cloned from https://github.com/bricksdont/moses-scripts
 MOSES=$base/tools/moses-scripts/scripts
 
-model_name=model_wmt17
+model_name=model_europarl
 num_threads=6
 
 ##########################################
@@ -43,4 +43,3 @@ cat $translations/test.tokenized.$model_name.$trg | $MOSES/tokenizer/detokenizer
 # compute case-sensitive BLEU on detokenized data
 
 cat $translations/test.$model_name.$trg | sacrebleu $data/test.$trg
-		
