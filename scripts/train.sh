@@ -15,15 +15,14 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
 			-t $base/data/train.bpe.en \
 			-vs $base/data/dev.bpe.de \
                         -vt $base/data/dev.bpe.en \
-                        --encoder rnn \
-                        --decoder rnn \
-                        --num-embed 64 \
-			--num-layers 1:1 \
-			--checkpoint-frequency 500 \
-                        --rnn-num-hidden 128 \
+                        --encoder transformer \
+                        --decoder transformer \
+                        --num-embed 512 \
+			--num-layers 6:6 \
+			--checkpoint-frequency 1000 \
+                        --rnn-num-hidden 512 \
                         --rnn-attention-type dot \
-                        --max-seq-len 60 \
+                        --max-seq-len 100 \
                         --decode-and-evaluate 500 \
-                        --use-cpu \
-                        -o $base/models/$model_name \
-			--max-updates 10000
+                        --device-ids 0 \
+                        -o $base/models/$model_name
