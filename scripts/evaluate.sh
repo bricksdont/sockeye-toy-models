@@ -14,7 +14,7 @@ trg=en
 # cloned from https://github.com/bricksdont/moses-scripts
 MOSES=$base/tools/moses-scripts/scripts
 
-model_name=model_10k
+model_name=baseline
 num_threads=1
 
 ##########################################
@@ -25,8 +25,8 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.translate \
 				-m $base/models/$model_name \
 				--beam-size 10 \
 				--length-penalty-alpha 1.0 \
-				--use-cpu \
-				--batch-size 100
+				--device-ids 0 \
+				--batch-size 16
 
 # undo BPE
 

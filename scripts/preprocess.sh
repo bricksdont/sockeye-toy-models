@@ -16,6 +16,8 @@ MOSES=$base/tools/moses-scripts/scripts
 bpe_num_operations=10000
 bpe_vocab_threshold=10
 
+# change path to preferred temp directory on your machine
+
 TMP=/var/tmp
 
 #################################################################

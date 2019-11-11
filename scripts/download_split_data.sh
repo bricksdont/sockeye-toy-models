@@ -1,4 +1,3 @@
-
 #! /bin/bash
 
 scripts=`dirname "$0"`
