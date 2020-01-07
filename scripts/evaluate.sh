@@ -1,46 +1,24 @@
 #! /bin/bash
 
-scripts=`dirname "$0"`
-base=$scripts/..
-
-data=$base/data
+script_dir=`dirname "$0"`
+base=$script_dir/..
+scripts=$base/scripts
+models=$base/models
 translations=$base/translations
 
-mkdir -p $translations
+for model_name in single ensemble; do
 
-src=de
-trg=en
+    echo "###################################################"
 
-# cloned from https://github.com/bricksdont/moses-scripts
-MOSES=$base/tools/moses-scripts/scripts
-
-model_name=model_10k
-num_threads=1
-
-##########################################
-
-OMP_NUM_THREADS=$num_threads python -m sockeye.translate \
-				-i $data/test.bpe.$src \
-				-o $translations/test.bpe.$model_name.$trg \
-				-m $base/models/$model_name \
-				--beam-size 10 \
-				--length-penalty-alpha 1.0 \
-				--use-cpu \
-				--batch-size 100
-
-# undo BPE
-
-cat $translations/test.bpe.$model_name.$trg | sed 's/\@\@ //g' > $translations/test.truecased.$model_name.$trg
-
-# undo truecasing
-
-cat $translations/test.truecased.$model_name.$trg | $MOSES/recaser/detruecase.perl > $translations/test.tokenized.$model_name.$trg
-
-# undo tokenization
-
-cat $translations/test.tokenized.$model_name.$trg | $MOSES/tokenizer/detokenizer.perl -l $trg > $translations/test.$model_name.$trg
-
-# compute case-sensitive BLEU on detokenized data
-
-cat $translations/test.$model_name.$trg | sacrebleu $data/test.$trg
-		
+    if [[ -d $base/translations/$model_name ]]; then
+      echo "Translations exist: $base/translations/$model_name"
+      if [[ -d $base/bleu/$model_name ]]; then
+        echo "BLEU scores exist: $base/bleu/$model_name"
+        echo "Will skip!"
+      else
+        . $scripts/evaluate_generic.sh
+      fi
+    else
+      echo "Translations do not exist: $base/translations/$model_name"
+    fi
+done

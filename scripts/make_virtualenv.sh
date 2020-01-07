@@ -14,3 +14,4 @@ virtualenv -p python3 $base/venvs/sockeye3
 
 echo "To activate your environment:"
 echo "    source $base/venvs/sockeye3/bin/activate"
+
