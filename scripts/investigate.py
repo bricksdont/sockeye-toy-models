@@ -8,7 +8,7 @@ import logging
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--models", type=float, help="Folder containing trained models", required=True)
+    parser.add_argument("--models", type=str, help="Folder containing trained models", required=True)
 
     args = parser.parse_args()
 
