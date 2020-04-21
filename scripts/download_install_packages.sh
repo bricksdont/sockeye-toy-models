@@ -25,6 +25,8 @@ pip install --no-deps -r $tools/sockeye/requirements/requirements.gpu-cu${CUDA_V
 
 pip install --upgrade numpy==1.16.1
 
+pip install mxboard
+
 # CPU
 
 deactivate
@@ -35,3 +37,5 @@ pip install --no-deps -r $tools/sockeye/requirements/requirements.txt $tools/soc
 # fix reload for continued training bug
 
 pip install --upgrade numpy==1.16.1
+
+pip install mxboard

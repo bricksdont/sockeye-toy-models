@@ -22,7 +22,7 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
       --transformer-feed-forward-num-hidden=128 \
       --num-embed 64 \
 			--num-layers 1:1 \
-			--checkpoint-interval 500 \
+			--checkpoint-interval 1000 \
       --decode-and-evaluate 500 \
       --num-words 10000 \
       --weight-tying \
