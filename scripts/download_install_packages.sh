@@ -6,24 +6,24 @@ base=$scripts/..
 tools=$base/tools
 mkdir -p $tools
 
-echo "Make sure this script is executed AFTER you have activated a virtualenv"
+# CUDA version on instance
+CUDA_VERSION=100
 
-# install Sockeye
+# checkout repo
 
-pip install sockeye==1.18.72 matplotlib mxboard
+git clone https://github.com/ZurichNLP/sockeye $tools/sockeye
 
-# install BPE library
+(cd $tools/sockeye && git checkout debug_init)
 
-pip install subword-nmt
+# GPU
 
-# alternatively:
-#git clone https://github.com/rsennrich/subword-nmt $tools/subword-nmt
+source $base/venvs/sockeye3-gpu/bin/activate
 
-# install sacrebleu for evaluation
+pip install --no-deps -r $tools/sockeye/requirements/requirements.gpu-cu${CUDA_VERSION}.txt $tools/sockeye
 
-pip install sacrebleu
+# CPU
 
-# install Moses scripts for preprocessing
+deactivate
+source $base/venvs/sockeye3-cpu/bin/activate
 
-git clone https://github.com/bricksdont/moses-scripts $tools/moses-scripts
-
+pip install --no-deps -r $tools/sockeye/requirements/requirements.txt $tools/sockeye
