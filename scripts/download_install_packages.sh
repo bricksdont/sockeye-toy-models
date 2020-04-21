@@ -7,7 +7,7 @@ tools=$base/tools
 mkdir -p $tools
 
 # CUDA version on instance
-CUDA_VERSION=100
+CUDA_VERSION=101
 
 # checkout repo
 

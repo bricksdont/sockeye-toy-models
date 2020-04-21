@@ -12,3 +12,5 @@ Make changes in
 Then run
 
     bash scripts/all.sh
+
+Or the individual steps in `scripts/all.sh`.

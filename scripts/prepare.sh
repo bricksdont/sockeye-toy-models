@@ -17,7 +17,7 @@ mkdir -p $prepared
 src=en
 trg=de
 
-cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab -o $prepared"
+cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab --num-words 10000 -o $prepared --min-num-shards 5"
 
 echo "Executing:"
 echo "$cmd"

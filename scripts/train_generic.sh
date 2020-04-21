@@ -23,7 +23,8 @@ OMP_NUM_THREADS=$num_threads python -m sockeye.train \
       --num-embed 64 \
 			--num-layers 1:1 \
 			--checkpoint-frequency 500 \
-      --max-seq-len 60:60 \
       --decode-and-evaluate 500 \
       --num-words 10000 \
+      --weight-tying \
+      --weight-tying-type src_trg_softmax \
       -o $model_path $additional_args
