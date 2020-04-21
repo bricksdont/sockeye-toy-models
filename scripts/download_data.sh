@@ -18,6 +18,7 @@ sockeye-autopilot --task wmt14_en_de --model none --workspace $data/sockeye_auto
 
 for corpus in train dev test; do
   for lang in $src $trg; do
-    ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/$corpus.bpe.$lang $data/$corpus.bpe.$lang
+    abs_path=$(readlink -m $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/$corpus.bpe.$lang)
+    ln -snf $abs_path $data/$corpus.bpe.$lang
   done
 done
