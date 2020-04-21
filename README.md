@@ -6,8 +6,8 @@
 
 Make changes in
 
-- `scripts/download_install_packages.sh` if your CUDA version is not 10.0
-- `scripts/train.sh` if on CPU you would like to use more than 1 thread, or a different GPU device id
+- `scripts/download_install_packages.sh` if your CUDA version is not 10.1
+- `scripts/train.sh` if on CPU you would like to use a different number of threads, or a different GPU device id
 
 Then run
 

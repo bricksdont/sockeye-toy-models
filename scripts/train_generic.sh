@@ -10,6 +10,8 @@
 echo "additional args: "
 echo "$additional_args"
 
+echo "Starting: $model_path"
+
 
 OMP_NUM_THREADS=$num_threads python -m sockeye.train \
 			-vs $data/dev.bpe.$src \
