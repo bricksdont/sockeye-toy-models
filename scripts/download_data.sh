@@ -3,7 +3,7 @@
 scripts=`dirname "$0"`
 base=$scripts/..
 
-data=$base/data
+data=$(readlink -m $base/data)
 
 src=en
 trg=de
@@ -16,9 +16,11 @@ sockeye-autopilot --task wmt14_en_de --model none --workspace $data/sockeye_auto
 
 (cd $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe && gunzip *)
 
-for corpus in train dev test; do
-  for lang in $src $trg; do
-    abs_path=$(readlink -m $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/$corpus.bpe.$lang)
-    ln -snf $abs_path $data/$corpus.bpe.$lang
-  done
-done
+ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/train.src $data/train.bpe.$src
+ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/train.trg $data/train.bpe.$trg
+
+ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/dev.src $data/dev.bpe.$src
+ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/dev.trg $data/dev.bpe.$trg
+
+ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/test.0.src $data/test.bpe.$src
+ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/test.0.trg $data/test.bpe.$trg
