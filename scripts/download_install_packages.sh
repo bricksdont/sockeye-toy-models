@@ -21,9 +21,17 @@ source $base/venvs/sockeye3-gpu/bin/activate
 
 pip install --no-deps -r $tools/sockeye/requirements/requirements.gpu-cu${CUDA_VERSION}.txt $tools/sockeye
 
+# fix reload for continued training bug
+
+pip install --upgrade numpy==1.16.1
+
 # CPU
 
 deactivate
 source $base/venvs/sockeye3-cpu/bin/activate
 
 pip install --no-deps -r $tools/sockeye/requirements/requirements.txt $tools/sockeye
+
+# fix reload for continued training bug
+
+pip install --upgrade numpy==1.16.1
