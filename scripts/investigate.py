@@ -21,15 +21,19 @@ def parse_args():
 
 def extract_perplexity_from_log(log_handle):
 
-    log_lines = log_handle.readlines()
+    finish_lines = []
 
-    last_line = log_lines[-1]
+    for line in log_handle:
+        if "Training finished" in line:
+            finish_lines.append(line)
 
-    if "Training finished" not in last_line:
+    if len(finish_lines) == 0:
         logging.warning("Training not finished: %s", log_handle)
         return None
 
-    perplexity = last_line.strip().split(" ")[-1]
+    last_finish = finish_lines[-1]
+
+    perplexity = last_finish.strip().split(" ")[-1]
 
     return perplexity
 
