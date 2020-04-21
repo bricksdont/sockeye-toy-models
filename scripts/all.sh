@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# fail if subprocess fails
+
+set -e
+
 scripts=`dirname "$0"`
 base=$scripts/..
 
