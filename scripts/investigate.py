@@ -94,18 +94,17 @@ def main():
 
     logging.debug("Found the following models: %s", model_paths)
 
-    perplexities, init_hashes, final_hashes = []
+    perplexities, init_hashes, final_hashes = [], [], []
 
     for model_path in model_paths:
 
-        restart = not "norestart" in model_path
+        restart = "norestart" not in model_path
 
         perplexity, init_hash, final_hash = check(model_path, restart=restart)
 
         perplexities.append(perplexity)
         init_hashes.append(init_hash)
         final_hashes.append(final_hash)
-
 
     # output as tabsep table
 
