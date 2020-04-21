@@ -114,8 +114,11 @@ def main():
 
     print("NAME\tPERPLEXITY\tINIT_MD5\tFINAL_MD5")
 
-    for model_path, perplexity, init_hash, final_hash in zip(model_paths, perplexities, init_hashes, final_hashes):
-        print("\t".join([model_path, perplexity, init_hash, final_hash]))
+    for values in zip(model_paths, perplexities, init_hashes, final_hashes):
+
+        as_strings = [str(value) for value in values]
+
+        print("\t".join(as_strings))
 
 
 if __name__ == '__main__':
