@@ -10,7 +10,6 @@ mkdir -p $base/venvs
 
 # python3 needs to be installed on your system
 
-virtualenv -p python3 $base/venvs/sockeye3
+virtualenv -p python3 $base/venvs/sockeye3-gpu
 
-echo "To activate your environment:"
-echo "    source $base/venvs/sockeye3/bin/activate"
+virtualenv -p python3 $base/venvs/sockeye3-cpu
