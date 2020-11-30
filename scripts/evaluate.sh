@@ -30,3 +30,10 @@ for seed in 1 2; do
     . $scripts/evaluate_generic.sh
 
 done
+
+hyp1=$evaluations/baseline_1/test.$trg
+hyp2=$evaluations/baseline_2/test.$trg
+
+output=$evaluations/bootstrap
+
+. $scripts/bootstrap_generic.sh
