@@ -45,5 +45,5 @@ pip install sockeye==1.18.115
 
 # download paired bootstrap
 
-wget https://github.com/bricksdont/util-scripts/blob/master/paired-bootstrap.py
+wget https://raw.githubusercontent.com/bricksdont/util-scripts/master/paired-bootstrap.py
 mv paired-bootstrap.py $tools/paired-bootstrap.py
