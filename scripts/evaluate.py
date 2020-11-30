@@ -12,7 +12,7 @@ import hashlib
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--models", type=str, help="Folder containing trained models", required=True)
+    parser.add_argument("--translations", type=str, help="Folder containing translations by models", required=True)
 
     args = parser.parse_args()
 
@@ -90,13 +90,13 @@ def main():
 
     model_paths = []
 
-    for root, dirs, files in os.walk(args.models):
+    for root, dirs, files in os.walk(args.translations):
         for dir_ in dirs:
             if dir_.startswith("cpu") or dir_.startswith("gpu"):
                 model_path = os.path.abspath(os.path.join(root, dir_))
                 model_paths.append(model_path)
 
-    logging.debug("Found the following models: %s", model_paths)
+    logging.debug("Found translations with the following models: %s", model_paths)
 
     perplexities, init_hashes, final_hashes = [], [], []
 

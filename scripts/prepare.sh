@@ -1,23 +1,22 @@
 #! /bin/bash
 
-scripts=`dirname "$0"`
-base=$scripts/..
-
-data=$base/data
-prepared=$base/prepared
-
-source $base/venvs/sockeye3-cpu/bin/activate
+# calling script needs to set:
+# $base
+# $src
+# $trg
 
 # measure time
 
 SECONDS=0
 
+data=$base/data
+prepared=$base/prepared
+
 mkdir -p $prepared
 
-src=en
-trg=de
+source $base/venvs/sockeye3-cpu/bin/activate
 
-cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab --num-words 10000 -o $prepared --min-num-shards 5"
+cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab -o $prepared"
 
 echo "Executing:"
 echo "$cmd"
@@ -26,9 +25,7 @@ python -m sockeye.prepare_data \
                         -s $data/train.bpe.$src \
                         -t $data/train.bpe.$trg \
 			                  --shared-vocab \
-			                  --num-words 10000 \
-                        -o $prepared \
-                        --min-num-shards 5
+                        -o $prepared
 
 echo "time taken:"
 echo "$SECONDS seconds"

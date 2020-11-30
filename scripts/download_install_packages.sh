@@ -1,41 +1,49 @@
 #! /bin/bash
 
-scripts=`dirname "$0"`
-base=$scripts/..
+# calling script needs to set:
+# $base
 
 tools=$base/tools
 mkdir -p $tools
 
+# install Moses scripts for preprocessing
+
+git clone https://github.com/bricksdont/moses-scripts $tools/moses-scripts
+
 # CUDA version on instance
-CUDA_VERSION=101
-
-# checkout repo
-
-git clone https://github.com/ZurichNLP/sockeye $tools/sockeye
-
-(cd $tools/sockeye && git checkout debug_init)
+CUDA_VERSION=102
 
 # GPU
 
 source $base/venvs/sockeye3-gpu/bin/activate
 
-pip install --no-deps -r $tools/sockeye/requirements/requirements.gpu-cu${CUDA_VERSION}.txt $tools/sockeye
+## Method A: install from PyPi
 
-# fix reload for continued training bug
+wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt
+pip install sockeye --no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt
+rm requirements.gpu-cu${CUDA_VERSION}.txt
 
-pip install --upgrade numpy==1.16.1
-
-pip install mxboard
+pip install mxboard tensorboard
 
 # CPU
 
 deactivate
 source $base/venvs/sockeye3-cpu/bin/activate
 
-pip install --no-deps -r $tools/sockeye/requirements/requirements.txt $tools/sockeye
+wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.txt
+pip install --no-deps -r requirements/requirements.txt $tools/sockeye
+rm requirements.txt
 
-# fix reload for continued training bug
+pip install mxboard tensorboard
 
-pip install --upgrade numpy==1.16.1
+# CPU 2 (for autopilot only)
 
-pip install mxboard
+deactivate
+source $base/venvs/sockeye-autopilot/bin/activate
+
+pip install sockeye==1.18.115
+
+# download paired bootstrap
+
+wget https://github.com/bricksdont/util-scripts/blob/master/paired-bootstrap.py
+mv paired-bootstrap.py $tools/paired-bootstrap.py

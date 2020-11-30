@@ -1,11 +1,16 @@
 #! /bin/bash
 
+# calling script needs to set:
+# $base
+
+base=$1
+
+src=en
+trg=de
+
 # fail if subprocess fails
 
 set -e
-
-scripts=`dirname "$0"`
-base=$scripts/..
 
 . $scripts/make_virtualenv.sh
 
@@ -17,4 +22,6 @@ base=$scripts/..
 
 . $scripts/train.sh
 
-. $scripts/investigate.sh
+. $scripts/translate.sh
+
+. $scripts/evaluate.sh
