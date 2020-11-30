@@ -16,7 +16,7 @@ mkdir -p $prepared
 
 source $base/venvs/sockeye3-cpu/bin/activate
 
-cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab -o $prepared"
+cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab -o $prepared --max-seq-len 100:100"
 
 echo "Executing:"
 echo "$cmd"
@@ -25,7 +25,8 @@ python -m sockeye.prepare_data \
                         -s $data/train.bpe.$src \
                         -t $data/train.bpe.$trg \
 			                  --shared-vocab \
-                        -o $prepared
+                        -o $prepared \
+                        --max-seq-len 100:100
 
 echo "time taken:"
 echo "$SECONDS seconds"
