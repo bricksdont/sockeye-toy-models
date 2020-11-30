@@ -17,12 +17,6 @@ models_sub=$models/$model_name
 
 mkdir -p $models_sub
 
-echo $CUDA_VISIBLE_DEVICES
-echo "Done reading visible devices."
-
-export MXNET_ENABLE_GPU_P2P=0
-echo "MXNET_ENABLE_GPU_P2P: $MXNET_ENABLE_GPU_P2P"
-
 source $base/venvs/sockeye3/bin/activate
 
 # parameters are the same for all Transformer models
@@ -83,7 +77,7 @@ python -m sockeye.train \
 --learning-rate-reduce-num-not-improved 4 \
 --checkpoint-interval $checkpoint_interval \
 --keep-last-params 30 \
---max-seq-len 250:250 \
+--max-seq-len 100:100 \
 --learning-rate-reduce-factor 0.7 \
 --decode-and-evaluate $decode_and_evaluate \
 --max-num-checkpoint-not-improved 10 \
