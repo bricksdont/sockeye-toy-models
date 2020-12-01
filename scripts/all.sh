@@ -4,6 +4,7 @@
 # $base
 
 base=$1
+scripts=$base/scripts
 
 src=en
 trg=de
