@@ -3,3 +3,6 @@ data
 prepared
 tools
 venvs
+.python-version
+translations
+evaluations
