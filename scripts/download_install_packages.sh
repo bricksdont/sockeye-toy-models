@@ -45,7 +45,7 @@ pip install mxboard tensorboard
 deactivate
 source $base/venvs/sockeye-autopilot/bin/activate
 
-pip install --no-cache-dir sockeye==1.18.115
+pip install --no-cache-dir sockeye==1.18.106
 
 # download paired bootstrap
 
