@@ -24,7 +24,7 @@ source $base/venvs/sockeye3-gpu/bin/activate
 ## Method A: install from PyPi
 
 wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt
-pip install sockeye --no-deps --no-cache-dir -r requirements.gpu-cu${CUDA_VERSION}.txt
+pip install sockeye==2.3.2 --no-deps --no-cache-dir -r requirements.gpu-cu${CUDA_VERSION}.txt
 rm requirements.gpu-cu${CUDA_VERSION}.txt
 
 pip install mxboard tensorboard
@@ -35,7 +35,7 @@ deactivate
 source $base/venvs/sockeye3-cpu/bin/activate
 
 wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.txt
-pip install --no-deps --no-cache-dir -r requirements/requirements.txt $tools/sockeye
+pip install sockeye==2.3.2 --no-deps --no-cache-dir -r requirements/requirements.txt
 rm requirements.txt
 
 pip install mxboard tensorboard
