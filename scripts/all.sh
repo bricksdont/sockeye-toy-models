@@ -13,7 +13,7 @@ trg=de
 
 set -e
 
-if [[ -d $base/venvs ]]; then
+if [[ ! -d $base/venvs ]]; then
 
     . $scripts/make_virtualenv.sh
 
