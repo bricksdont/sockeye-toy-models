@@ -9,9 +9,9 @@ scripts=$base/scripts
 src=en
 trg=de
 
-# fail if subprocess fails
+# fail if subprocess fails?
 
-set -e
+# set -e
 
 if [[ ! -d $base/venvs ]]; then
 
