@@ -3,6 +3,8 @@
 # calling script needs to set:
 # $base
 
+export TMPDIR="/var/tmp"
+
 tools=$base/tools
 mkdir -p $tools
 
