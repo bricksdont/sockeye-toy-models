@@ -11,7 +11,7 @@ translations=$base/translations
 
 mkdir -p $translations
 
-source $base/venvs/sockeye3/bin/activate
+source $base/venvs/sockeye3-gpu/bin/activate
 
 for seed in 1 2; do
 

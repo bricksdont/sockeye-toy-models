@@ -17,7 +17,7 @@ models_sub=$models/$model_name
 
 mkdir -p $models_sub
 
-source $base/venvs/sockeye3/bin/activate
+source $base/venvs/sockeye3-gpu/bin/activate
 
 # parameters are the same for all Transformer models
 

@@ -6,3 +6,4 @@ venvs
 .python-version
 translations
 evaluations
+logs
