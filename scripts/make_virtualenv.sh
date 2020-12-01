@@ -3,6 +3,10 @@
 # virtualenv must be installed on your system, install with e.g.
 # pip install virtualenv
 
+echo "Executing: pyenv local 3.6.12"
+
+pyenv local 3.6.12
+
 # calling script needs to set:
 # $base
 

@@ -14,19 +14,29 @@ prepared=$base/prepared
 
 mkdir -p $prepared
 
-source $base/venvs/sockeye3-cpu/bin/activate
+for unused in pseudo_loop; do
 
-cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab -o $prepared --max-seq-len 100:100"
+    if [[ -d $prepared ]]; then
+      echo "Folder exists: $prepared"
+      echo "Skipping. Delete folder to repeat step."
+      continue
+    fi
 
-echo "Executing:"
-echo "$cmd"
+    source $base/venvs/sockeye3-cpu/bin/activate
 
-python -m sockeye.prepare_data \
-                        -s $data/train.bpe.$src \
-                        -t $data/train.bpe.$trg \
-			                  --shared-vocab \
-                        -o $prepared \
-                        --max-seq-len 100:100
+    cmd="python -m sockeye.prepare_data -s $data/train.bpe.$src -t $data/train.bpe.$trg --shared-vocab -o $prepared --max-seq-len 100:100"
 
-echo "time taken:"
-echo "$SECONDS seconds"
+    echo "Executing:"
+    echo "$cmd"
+
+    python -m sockeye.prepare_data \
+                            -s $data/train.bpe.$src \
+                            -t $data/train.bpe.$trg \
+                            --shared-vocab \
+                            -o $prepared \
+                            --max-seq-len 100:100
+
+    echo "time taken:"
+    echo "$SECONDS seconds"
+
+done
