@@ -13,9 +13,16 @@ trg=de
 
 set -e
 
-. $scripts/make_virtualenv.sh
+if [[ -d $base/venvs ]]; then
 
-. $scripts/download_install_packages.sh
+    . $scripts/make_virtualenv.sh
+
+    . $scripts/download_install_packages.sh
+
+else
+    echo "Folder exists: $base/venvs"
+    echo "Will skip creating venvs and installing libraries. Delete folders to repeat steps."
+fi
 
 . $scripts/download_data.sh
 
