@@ -35,7 +35,7 @@ deactivate
 source $base/venvs/sockeye3-cpu/bin/activate
 
 wget https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.txt
-pip install sockeye==2.3.2 --no-deps --no-cache-dir -r requirements/requirements.txt
+pip install sockeye==2.3.2 --no-deps --no-cache-dir -r requirements.txt
 rm requirements.txt
 
 pip install mxboard tensorboard
