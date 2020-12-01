@@ -12,8 +12,6 @@ SECONDS=0
 data=$base/data
 prepared=$base/prepared
 
-mkdir -p $prepared
-
 for unused in pseudo_loop; do
 
     if [[ -d $prepared ]]; then
@@ -21,6 +19,8 @@ for unused in pseudo_loop; do
       echo "Skipping. Delete folder to repeat step."
       continue
     fi
+
+    mkdir -p $prepared
 
     source $base/venvs/sockeye3-cpu/bin/activate
 
