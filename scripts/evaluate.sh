@@ -32,8 +32,8 @@ for seed in 1 2; do
 
 done
 
-hyp1=$translations_sub/baseline_1/test.$trg
-hyp2=$translations_sub/baseline_2/test.$trg
+hyp1=$translations/baseline_1/test.$trg
+hyp2=$translations/baseline_2/test.$trg
 
 output=$evaluations/bootstrap
 
