@@ -38,7 +38,7 @@ for unused in pseudo_loop; do
 
   if [[ -f $models_sub/log ]]; then
 
-      training_finished=`grep "Training finished" $models_sub/log | wc -l`
+      training_finished=`grep "Training finished. Best checkpoint" $models_sub/log | wc -l`
 
       if [[ $training_finished != 0 ]]; then
           echo "Training is finished"
