@@ -20,10 +20,11 @@ for seed in 1 2; do
     models_sub=$base/models/$model_name
 
     evaluations_sub=$evaluations/$model_name
+    translations_sub=$translations/$model_name
 
     mkdir -p $evaluations_sub
 
-    hyp=$evaluations_sub/test.$trg
+    hyp=$translations_sub/test.$trg
     ref=$data/test.$trg
     output=$evaluations_sub/bleu
 
