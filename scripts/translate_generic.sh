@@ -47,7 +47,7 @@ for unused in pseudo_loop; do
 
     # undo pieces
 
-    cat $output_bpe | sed 's/ //g;s/▁/ /g' > $output_tokenized
+    cat $output_bpe | sed 's/\@\@ //g' > $output_tokenized
 
     # detokenize
 
