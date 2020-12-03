@@ -32,6 +32,11 @@ for unused in pseudo_loop; do
     ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/test.0.src $data/test.bpe.$src
     ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/bpe/test.0.trg $data/test.bpe.$trg
 
+    (cd $data/sockeye_autopilot/systems/wmt14_en_de/data/raw && gunzip test.*)
+
+    ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/raw/test.0.src $data/test.$src
+    ln -snf $data/sockeye_autopilot/systems/wmt14_en_de/data/raw/test.0.trg $data/test.$trg
+
     # sizes
     echo "Sizes of corpora:"
     wc -l $data/*
