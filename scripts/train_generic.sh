@@ -87,7 +87,6 @@ for unused in pseudo_loop; do
   --gradient-clipping-type abs \
   --gradient-clipping-threshold 1 \
   --decode-and-evaluate-device-id 0 \
-  --disable-device-locking \
-  --max-seconds 86400
+  --disable-device-locking
 
 done
