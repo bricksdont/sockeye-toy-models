@@ -4,7 +4,9 @@ Here are some ways to reproduce my results, ordered by convenience:
 
 ## Single command
 
-Run the following on an instance that Python3 and has access to 1 GPU:
+Run the following on an instance that has Python and access to 1 GPU:
+
+    curl -sL https://gist.githubusercontent.com/bricksdont/b5118b8b08b8270f15dc595e9579b48b/raw/fd35abbedfb839531253a91e7e0a2ceb5a9a0052/bootsTRAP.sh | bash
 
 ## More details about individual steps
 
