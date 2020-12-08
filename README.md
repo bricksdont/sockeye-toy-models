@@ -1,10 +1,15 @@
 # Investigating significance testing of NMT models
 
+This is a quick test to see if setting a different random seed can cause significant differences in
+translation quality according to paired bootstrap.
+
+The data I am using is WMT 14 EN-DE, all the preprocessing and training options are widely used.
+
 Here are some ways to reproduce my results, ordered by convenience:
 
 ## Single command
 
-Run the following on an instance that has Python and access to 1 GPU:
+Run the following on an instance that has Python 3 and access to 1 GPU:
 
     curl -sL https://gist.githubusercontent.com/bricksdont/b5118b8b08b8270f15dc595e9579b48b/raw/fd35abbedfb839531253a91e7e0a2ceb5a9a0052/bootsTRAP.sh | bash
 
