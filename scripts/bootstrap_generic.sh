@@ -9,6 +9,7 @@
 # $output
 
 tools=$base/tools
+scripts=$base/scripts
 
 for unused in pseudo_loop; do
 
@@ -16,7 +17,7 @@ for unused in pseudo_loop; do
       continue
     fi
 
-    python $tools/paired-bootstrap.py $ref $hyp1 $hyp2 --eval_type bleu_detok > $output
+    python $scripts/paired-bootstrap.py $ref $hyp1 $hyp2 > $output
 
     echo "$output"
     cat $output

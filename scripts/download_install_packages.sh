@@ -40,14 +40,13 @@ rm requirements.txt
 
 pip install mxboard tensorboard
 
+# other packages for paired bootstrap
+
+pip install methodtools
+
 # CPU 2 (for autopilot only)
 
 deactivate
 source $base/venvs/sockeye-autopilot/bin/activate
 
 pip install --no-cache-dir sockeye==1.18.106
-
-# download paired bootstrap
-
-wget https://raw.githubusercontent.com/bricksdont/util-scripts/master/paired-bootstrap.py
-mv paired-bootstrap.py $tools/paired-bootstrap.py
